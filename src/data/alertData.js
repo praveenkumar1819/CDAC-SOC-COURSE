@@ -1,0 +1,96 @@
+// FinCorp SOC Investigation Telemetry & Ground Truth Data
+export const ALERT_FINANCE01 = {
+  id: 'ALT-2026-9042',
+  title: 'Multiple Failed Login Attempts',
+  name: 'Multiple Failed Login Attempts (Windows Auth)',
+  ruleId: 'DET-WIN-0422',
+  status: 'Open - Under Triage',
+  severity: 'Medium',
+  initialScore: 5.8,
+  createdAt: '10:32:00 AM',
+  shiftTimestamp: '10:32 AM',
+  assignee: 'Learner (L1 SOC Analyst)',
+  analystCallsign: 'Analyst L1',
+  mitre: {
+    tactic: 'TA0006 - Credential Access',
+    technique: 'T1110.001 - Brute Force: Password Guessing',
+    url: 'https://attack.mitre.org/techniques/T1110/001/'
+  },
+  user: {
+    id: 'USR-8821',
+    username: 'Finance01',
+    fullName: 'Jane Miller',
+    email: 'jane.miller@fincorp-global.com',
+    role: 'Senior Finance Analyst',
+    department: 'Corporate Treasury & Finance',
+    manager: 'David Henderson (Treasury VP)',
+    location: 'Building B, Floor 3, Desk 342',
+    accountStatus: 'Active',
+    isPrivileged: false,
+    privilegedNote: 'Standard Domain User. Not member of Domain Admins or Enterprise Admins.',
+    passwordLastSet: 'Today, 10:15:22 AM (Self-Service Reset)',
+    groups: ['Finance-All', 'Treasury-ERP-Users', 'Standard-Workstations-Access']
+  },
+  host: {
+    id: 'AST-FIN-0094',
+    hostname: 'FIN-PC-04',
+    fqdn: 'fin-pc-04.corp.fincorp.local',
+    ip: '10.10.20.15',
+    mac: '00:1A:2B:3C:4D:5E',
+    os: 'Windows 11 Enterprise (Build 22631.3007)',
+    assetType: 'Employee Workstation (Laptop)',
+    department: 'Finance',
+    criticality: 'Medium - Department Workstation',
+    edrStatus: 'Active & Healthy (FinCorp Defender EDR v8.2)',
+    lastReboot: 'Yesterday, 6:00 PM',
+    isolated: false
+  },
+  network: {
+    sourceIp: '10.10.20.15',
+    destinationIp: '10.10.10.20 (DC01.corp.fincorp.local - Active Directory)',
+    subnet: '10.10.20.0/24 (Finance Workstations VLAN 20)',
+    gateway: '10.10.20.1',
+    dns: '10.10.10.20',
+    scope: 'Internal Private Subnet',
+    isExternal: false,
+    reputationScore: 'Clean (Internal Trusted Host)',
+    geo: 'Internal LAN / New York FinCorp HQ'
+  },
+  detectionLogic: {
+    name: 'Windows - Excessive Authentication Failures Single Account',
+    description: 'Triggers when 10 or more Windows Event ID 4625 (Logon Failure) events occur for the same target user within a 2-minute sliding window.',
+    threshold: '10 failures in 120s',
+    observedFailures: 18,
+    timeWindow: '10:30:01 - 10:31:25 (84 seconds)'
+  },
+  helpdeskTicket: {
+    ticketId: 'IT-94821',
+    timestamp: '10:15:22 AM',
+    requestedBy: 'Jane Miller (Finance01)',
+    category: 'Identity & Access / Password Reset',
+    status: 'Resolved / Closed',
+    technician: 'FinCorp Helpdesk Bot / Automated Portal',
+    notes: 'User requested self-service password reset due to policy expiration prompt. 2FA push approved via mobile authenticator. New password committed to Active Directory at 10:15:22 AM. Workstation FIN-PC-04 was in sleep mode at employee desk.'
+  },
+  events: [
+    { id: 1, time: '10:30:01', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 2, time: '10:30:06', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 3, time: '10:30:11', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 4, time: '10:30:16', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'svchost.exe (Lanman)', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Network share auto-reconnect \\\\fs01\\finance' },
+    { id: 5, time: '10:30:20', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 6, time: '10:30:25', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 7, time: '10:30:30', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'svchost.exe (Lanman)', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Network share auto-reconnect \\\\fs01\\finance' },
+    { id: 8, time: '10:30:35', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 9, time: '10:30:40', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 10, time: '10:30:45', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'teams.exe', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Cloud identity sync attempt with cached token' },
+    { id: 11, time: '10:30:50', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 12, time: '10:30:55', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 13, time: '10:31:00', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'svchost.exe (Lanman)', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Network share auto-reconnect \\\\fs01\\finance' },
+    { id: 14, time: '10:31:05', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 15, time: '10:31:10', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 16, time: '10:31:15', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 17, time: '10:31:20', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'OUTLOOK.EXE', logonType: 3, subStatus: '0xC000006A', description: 'Logon failure: Bad password / outdated cached token' },
+    { id: 18, time: '10:31:25', eventId: 4625, type: 'Logon Failure', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'winlogon.exe', logonType: 2, subStatus: '0xC000006A', description: 'Interactive logon failure: Jane typed old password by reflex at lock screen' },
+    { id: 19, time: '10:31:45', eventId: 4624, type: 'Logon Success', user: 'Finance01', host: 'FIN-PC-04', ip: '10.10.20.15', process: 'winlogon.exe', logonType: 2, subStatus: '0x0 (STATUS_SUCCESS)', description: 'Interactive logon SUCCESS: Jane entered new updated password at console' }
+  ]
+};
