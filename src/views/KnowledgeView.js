@@ -67,7 +67,7 @@ function renderKnowledgeContent() {
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
             ${WINDOWS_LOGON_TYPES.map(type => `
-              <div class="glass-panel" style="padding: 1.5rem; border-color: ${type.type === 2 ? 'rgba(16, 185, 129, 0.4)' : (type.type === 3 ? 'rgba(0, 242, 254, 0.3)' : 'var(--border-subtle)')};">
+              <div class="glass-panel" style="padding: 1.5rem; border-color: ${type.type === 2 ? 'rgba(16, 185, 129, 0.4)' : (type.type === 3 ? 'rgba(56, 189, 248, 0.3)' : 'var(--border-subtle)')};">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
                   <span class="mono-data" style="font-weight: 700; font-size: 0.82rem;">TYPE ${type.type}</span>
                   <span style="font-weight: 700; color: var(--text-bright); font-size: 0.95rem;">${type.name}</span>
@@ -136,7 +136,7 @@ function renderKnowledgeContent() {
                 </div>
                 <h4 style="font-size: 1.05rem; color: var(--text-bright); margin-bottom: 0.35rem;">${evt.name}</h4>
                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">${evt.description}</p>
-                <div style="font-size: 0.78rem; color: var(--cyan-text); background: rgba(0,242,254,0.05); padding: 0.5rem; border-radius: 4px;">
+                <div style="font-size: 0.78rem; color: var(--cyan-text); background: rgba(56, 189, 248,0.05); padding: 0.5rem; border-radius: 4px;">
                   FinCorp Context: ${evt.fincorpContext}
                 </div>
               </div>

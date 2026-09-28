@@ -1,17 +1,19 @@
 // Topic 1 View: SOC Architecture (People, Process, Technology, Data Flow)
+// 2-Column Desktop / Stacked Mobile Layout: Text + Animated Conceptual Visuals
 import { store } from '../state/store.js';
-import { renderTeamMap, initTeamMapEvents } from '../components/TeamMap.js';
-import { renderProcessFlow, initProcessFlowEvents } from '../components/ProcessFlow.js';
-import { renderDataFlow, initDataFlowEvents } from '../components/DataFlow.js';
 import { renderProgressionPath } from '../components/ProgressionPath.js';
-import { SOC_TECH } from '../data/courseData.js';
+import { renderDataFlow, initDataFlowEvents } from '../components/DataFlow.js';
+import {
+  renderTeamVisual,
+  renderProcessCycleVisual,
+  renderTechEcosystemVisual
+} from '../components/ContextualVisuals.js';
 import { sound } from '../audio/soundEffects.js';
 
-let selectedTechId = 'siem';
+let selectedRole = 'l1';
+let selectedTech = 'siem';
 
 export function renderTopic1View() {
-  const selectedTech = SOC_TECH.find(t => t.id === selectedTechId) || SOC_TECH[0];
-
   return `
     <div class="container animate-fade-in" style="padding-top: 1.5rem; padding-bottom: 5rem;">
       
@@ -19,7 +21,7 @@ export function renderTopic1View() {
       ${renderProgressionPath('topic-1')}
 
       <!-- TOPIC HERO & STORY -->
-      <section style="margin-bottom: 3rem;">
+      <section style="margin-bottom: 3.5rem;">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
           <span class="genz-badge badge-demo">TOPIC 01 • 10:25 AM</span>
           <span class="mono-data">FINCORP CYBER DEFENSE CENTER</span>
@@ -39,153 +41,177 @@ export function renderTopic1View() {
             you need to understand the four pillars of the SOC machine: <strong>People, Process, Technology, and Security Data.</strong>"
           </p>
         </div>
-
-        <!-- 4 Pillars Cards Navigation Overview -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 3rem;">
-          <a href="#section-people" style="text-decoration: none;" class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-              <span class="genz-badge badge-key-idea">PILLAR 01</span>
-              <h3 style="font-size: 1.15rem; color: var(--text-bright);">PEOPLE</h3>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              Tiered escalation hierarchy from L1 Triage to L2, L3, Domain Specialists, SOC Manager, and CISO.
-            </p>
-          </a>
-
-          <a href="#section-process" style="text-decoration: none;" class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-              <span class="genz-badge badge-try-it">PILLAR 02</span>
-              <h3 style="font-size: 1.15rem; color: var(--text-bright);">PROCESS</h3>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              The continuous operational lifecycle: Monitor ➔ Detect ➔ Analyze (Your Core Focus) ➔ Respond.
-            </p>
-          </a>
-
-          <a href="#section-technology" style="text-decoration: none;" class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-              <span class="genz-badge badge-tech-box">PILLAR 03</span>
-              <h3 style="font-size: 1.15rem; color: var(--text-bright);">TECHNOLOGY</h3>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              SIEM, EDR, NDR, Secure Email Gateways, Threat Intelligence feeds, and SOAR case management.
-            </p>
-          </a>
-
-          <a href="#section-dataflow" style="text-decoration: none;" class="glass-panel" style="padding: 1.5rem; cursor: pointer;">
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-              <span class="genz-badge badge-alert">PILLAR 04</span>
-              <h3 style="font-size: 1.15rem; color: var(--text-bright);">SECURITY DATA</h3>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              The end-to-end data pipeline: Sources ➔ Logs ➔ Detection ➔ Alert ➔ L1 Triage ➔ Resolution.
-            </p>
-          </a>
-        </div>
       </section>
 
-      <!-- PILLAR 1: PEOPLE -->
+      <!-- ===================================================================
+           SUBTOPIC 1: PEOPLE (THE SOC TEAM)
+           =================================================================== -->
       <section id="section-people" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
-        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem;">
-          <span class="genz-badge badge-demo">PILLAR 01: TEAM ARCHITECTURE</span>
-          <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">ESCALATION HIERARCHY</span>
-        </div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">
-          Who's in the SOC?
-        </h2>
-        <p style="font-size: 1rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
-          A Security Operations Center functions as an elite coordinated unit. Technical escalations flow upward from <strong>L1 ➔ L2 ➔ L3</strong>, while Operational Leadership (SOC Manager) and Executive Strategy (CISO) provide governance and mission direction.
-        </p>
+        <div class="learning-grid">
+          
+          <!-- LEFT: LEARNING EXPLANATION -->
+          <div class="learning-content">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="genz-badge badge-key-idea">PILLAR 01: TEAM</span>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">ESCALATION HIERARCHY</span>
+            </div>
+            
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.75rem; color: var(--text-bright);">
+              Who’s in the SOC?
+            </h2>
 
-        <div id="team-map-container">
-          ${renderTeamMap()}
-        </div>
-      </section>
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+              A Security Operations Center functions as an elite coordinated unit. Technical escalations flow upward from <strong>L1 ➔ L2 ➔ L3</strong>, while Operational Leadership (SOC Manager) and Executive Strategy (CISO) provide governance and mission direction.
+            </p>
 
-      <!-- PILLAR 2: PROCESS -->
-      <section id="section-process" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
-        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem;">
-          <span class="genz-badge badge-try-it">PILLAR 02: OPERATIONAL WORKFLOW</span>
-          <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">THE SOC LIFECYCLE</span>
-        </div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">
-          The 4-Stage Operational Loop
-        </h2>
-        <p style="font-size: 1rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
-          Security is an unbroken circular engine. Click through the four phases below. Pay special attention to <strong>Stage 03: ANALYZE</strong>, which is where you spend 80% of your time as an L1 analyst.
-        </p>
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem;">
+              As an <strong>L1 Analyst</strong>, you sit right in the center of the operational wheel. You review incoming alerts, collect host and user evidence, document triage notes, and decide whether to close the alert or escalate to an L2 specialist.
+            </p>
 
-        <div id="process-flow-container">
-          ${renderProcessFlow()}
-        </div>
-      </section>
-
-      <!-- PILLAR 3: TECHNOLOGY -->
-      <section id="section-technology" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
-        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem;">
-          <span class="genz-badge badge-tech-box">PILLAR 03: DEFENSIVE ARSENAL</span>
-          <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">TOOLING STACK</span>
-        </div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">
-          The SOC Technology Ecosystem
-        </h2>
-        <p style="font-size: 1rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
-          No single tool catches everything. FinCorp uses a defense-in-depth stack to correlate telemetry across endpoints, network perimeters, email inboxes, and cloud systems.
-        </p>
-
-        <!-- Tech Cards Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
-          ${SOC_TECH.map(tech => `
-            <div class="glass-panel" data-tech-card-id="${tech.id}" style="padding: 1.4rem; cursor: pointer; border-color: ${tech.id === selectedTechId ? 'var(--cyan-primary)' : 'var(--border-subtle)'}; background: ${tech.id === selectedTechId ? 'rgba(0, 242, 254, 0.08)' : 'var(--bg-card)'};">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span class="mono-data" style="font-size: 0.78rem; font-weight: 700;">${tech.name}</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">STACK COMPONENT</span>
+            <!-- Collapsible Tech Box -->
+            <div class="tech-box-collapsible">
+              <div class="tech-box-header" data-toggle-details="tech-details-people">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--violet-primary);">🧩 TECH BOX: Escalation Criteria [Details ▾]</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">When to escalate</span>
               </div>
-              <h4 style="font-size: 1.05rem; color: var(--text-bright); margin-bottom: 0.35rem;">
-                ${tech.fullName}
-              </h4>
-              <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
-                ${tech.role}
-              </p>
+              <div id="tech-details-people" class="tech-box-details" style="display: none;">
+                <div>• <strong>Escalate to L2:</strong> Confirmed malware execution, lateral movement evidence, unresolvable anomalies.</div>
+                <div>• <strong>Escalate to L3:</strong> Novel zero-day indicators, persistent APT adversary activity requiring threat hunting.</div>
+                <div>• <strong>Notify SOC Manager:</strong> Severe incidents impacting Tier-0 systems, SLA breach risks, critical outages.</div>
+              </div>
             </div>
-          `).join('')}
-        </div>
 
-        <!-- Selected Tech Deep Dive Box -->
-        <div class="glass-panel" style="padding: 1.75rem; background: rgba(14, 21, 38, 0.9); border-color: rgba(0, 242, 254, 0.3);">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
-            <div>
-              <span class="genz-badge badge-tech-box" style="margin-bottom: 0.35rem;">DEEP DIVE TOOLSPEC</span>
-              <h3 style="font-size: 1.35rem; color: var(--text-bright);">${selectedTech.name} — ${selectedTech.fullName}</h3>
-            </div>
-            <div style="display: flex; gap: 0.4rem;">
-              ${selectedTech.tools.map(t => `<span class="mono-data">${t}</span>`).join('')}
-            </div>
-          </div>
-          <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.25rem; line-height: 1.6;">
-            ${selectedTech.desc}
-          </p>
-          <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 8px; padding: 1rem;">
-            <span style="font-size: 0.78rem; font-family: var(--font-mono); color: var(--cyan-primary); font-weight: 700;">FINCORP APPLICATION:</span>
-            <div style="font-size: 0.9rem; color: var(--text-bright); margin-top: 0.25rem;">
-              ${selectedTech.finCorpUsage}
+            <!-- Role Selector Helper -->
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+              <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);">QUICK SWITCH:</span>
+              ${['l1', 'l2', 'l3', 'intel', 'manager'].map(r => `
+                <button class="btn btn-secondary team-role-quick-btn" data-team-role="${r}" style="padding: 0.25rem 0.6rem; font-size: 0.72rem; ${r === selectedRole ? 'border-color: var(--cyan-primary); color: var(--cyan-primary);' : ''}">
+                  ${r.toUpperCase()}
+                </button>
+              `).join('')}
             </div>
           </div>
+
+          <!-- RIGHT: ANIMATED CONCEPTUAL VISUAL -->
+          <div id="team-visual-container">
+            ${renderTeamVisual(selectedRole)}
+          </div>
+
         </div>
       </section>
 
-      <!-- PILLAR 4: SECURITY DATA FLOW -->
-      <section id="section-dataflow" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
-        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem;">
-          <span class="genz-badge badge-alert">PILLAR 04: LIVE DATA STREAM</span>
-          <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">END-TO-END PIPELINE</span>
+      <!-- ===================================================================
+           SUBTOPIC 2: PROCESS (OPERATIONAL LOOP)
+           =================================================================== -->
+      <section id="section-process" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
+        <div class="learning-grid">
+          
+          <!-- LEFT: LEARNING EXPLANATION -->
+          <div class="learning-content">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="genz-badge badge-try-it">PILLAR 02: PROCESS</span>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">THE SOC LIFECYCLE</span>
+            </div>
+
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.75rem; color: var(--text-bright);">
+              The 4-Stage Operational Loop
+            </h2>
+
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+              Security operations are not a static checklist; they are an unbroken circular engine. Every alert passes through four fundamental stages: <strong>Monitor ➔ Detect ➔ Analyze ➔ Respond</strong>.
+            </p>
+
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem;">
+              Notice where you operate: <strong>Stage 03 (Analyze)</strong>. While SIEM rules handle Detection, humans are required for Analysis because automated rules lack human business context (like knowing that Priya changed her password this morning).
+            </p>
+
+            <!-- Collapsible Tech Box -->
+            <div class="tech-box-collapsible">
+              <div class="tech-box-header" data-toggle-details="tech-details-process">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--violet-primary);">🧩 TECH BOX: Mean Time to Detect & Respond [Details ▾]</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">SLA Metrics</span>
+              </div>
+              <div id="tech-details-process" class="tech-box-details" style="display: none;">
+                <div>• <strong>MTTA (Mean Time to Acknowledge):</strong> FinCorp L1 target: &lt; 5 minutes from alert generation.</div>
+                <div>• <strong>MTTT (Mean Time to Triage):</strong> FinCorp L1 target: &lt; 15 minutes to inspect user, host, IP, and evidence.</div>
+                <div>• <strong>MTTR (Mean Time to Respond):</strong> Total time to isolate host, reset credentials, or close false positive.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: ANIMATED CONCEPTUAL VISUAL -->
+          <div>
+            ${renderProcessCycleVisual()}
+          </div>
+
         </div>
-        <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">
-          How Security Telemetry Traverses FinCorp
-        </h2>
-        <p style="font-size: 1rem; color: var(--text-secondary); max-width: 800px; margin-bottom: 1.5rem;">
-          Follow the journey of a single packet from Jane Miller’s workstation until it triggers an alert and lands on your desk.
-        </p>
+      </section>
+
+      <!-- ===================================================================
+           SUBTOPIC 3: TECHNOLOGY (THE ARSENAL)
+           =================================================================== -->
+      <section id="section-technology" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
+        <div class="learning-grid">
+          
+          <!-- LEFT: LEARNING EXPLANATION -->
+          <div class="learning-content">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="genz-badge badge-tech-box">PILLAR 03: DEFENSE STACK</span>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">DEFENSIVE ARSENAL</span>
+            </div>
+
+            <h2 style="font-size: 1.7rem; margin-bottom: 0.75rem; color: var(--text-bright);">
+              The SOC Technology Ecosystem
+            </h2>
+
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem;">
+              No single cybersecurity tool catches everything. FinCorp deploys a defense-in-depth architecture where logs stream from endpoints, network switches, and firewalls into specialized security engines.
+            </p>
+
+            <p style="font-size: 0.96rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem;">
+              Click through the tools on the diagram to see the telemetry each engine contributes. For example, the <strong>SIEM</strong> correlates login bursts, while the <strong>EDR</strong> inspects which local process attempted the authentication.
+            </p>
+
+            <!-- Collapsible Tech Box -->
+            <div class="tech-box-collapsible">
+              <div class="tech-box-header" data-toggle-details="tech-details-tech">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--violet-primary);">🧩 TECH BOX: SIEM vs EDR Telemetry [Details ▾]</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">Data comparison</span>
+              </div>
+              <div id="tech-details-tech" class="tech-box-details" style="display: none;">
+                <div>• <strong>SIEM (Security Information & Event Management):</strong> Aggregates central logs (Windows Event 4625/4624, Syslog, Firewall).</div>
+                <div>• <strong>EDR (Endpoint Detection & Response):</strong> Records process command lines, DLL loads, and registry changes on workstations.</div>
+                <div>• <strong>NDR (Network Detection & Response):</strong> Inspects unencrypted protocols, packet metadata, and internal beaconing.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: ANIMATED CONCEPTUAL VISUAL -->
+          <div id="tech-visual-container">
+            ${renderTechEcosystemVisual(selectedTech)}
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SUBTOPIC 4: DATA FLOW (TELEMETRY PIPELINE)
+           =================================================================== -->
+      <section id="section-dataflow" style="margin-bottom: 4rem; scroll-margin-top: 100px;">
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span class="genz-badge badge-alert">PILLAR 04: DATA PIPELINE</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">FROM PACKET TO ANALYST</span>
+          </div>
+
+          <h2 style="font-size: 1.7rem; margin-bottom: 0.75rem; color: var(--text-bright);">
+            How Security Telemetry Traverses FinCorp
+          </h2>
+
+          <p style="font-size: 0.98rem; color: var(--text-secondary); max-width: 820px; line-height: 1.65;">
+            Follow the journey of a single packet from the endpoint forwarder through the normalization pipeline, detection correlation rule, and alert dispatch queue.
+          </p>
+        </div>
 
         <div id="data-flow-container">
           ${renderDataFlow()}
@@ -194,7 +220,7 @@ export function renderTopic1View() {
 
       <!-- QUICK CHECK QUIZ -->
       <section style="margin-bottom: 4rem;">
-        <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.9); border: 1px solid rgba(139, 92, 246, 0.4);">
+        <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.9); border: 1px solid rgba(139, 92, 246, 0.35);">
           <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
             <span class="genz-badge badge-quiz">🧠 QUICK CHECK</span>
             <span style="font-size: 0.85rem; color: #d8b4fe; font-family: var(--font-mono);">STAGE 01 KNOWLEDGE CHECK</span>
@@ -227,26 +253,26 @@ export function renderTopic1View() {
 
       <!-- 10:32 AM STORY TRANSITION EVENT CALLOUT -->
       <section style="position: relative;">
-        <div class="glass-panel-alert pulse-alert-node" style="padding: 2.5rem; border-radius: var(--border-radius-lg); text-align: center;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(239, 68, 68, 0.2); border: 2px solid var(--danger); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="glass-panel-alert pulse-alert-node" style="padding: 2.25rem; border-radius: var(--border-radius-lg); text-align: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(244, 63, 94, 0.15); border: 2px solid var(--danger); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
 
           <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #fca5a5; margin-bottom: 0.5rem; letter-spacing: 0.1em;">
             TIME ADVANCE: 10:32 AM EST • SIEM SIREN SOUNDS
           </div>
 
-          <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-bright); margin-bottom: 0.75rem;">
+          <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-bright); margin-bottom: 0.75rem;">
             🚨 INCOMING DETECTION: MULTIPLE FAILED LOGINS
           </h2>
 
-          <p style="font-size: 1.05rem; color: #fecaca; max-width: 680px; margin: 0 auto 1.75rem auto; line-height: 1.6;">
-            Your console flashes amber and red. SIEM Rule <span class="mono-data" style="color: #ffffff; background: rgba(239,68,68,0.3);">DET-WIN-0422</span> just triggered on threshold. 
+          <p style="font-size: 1rem; color: #fecaca; max-width: 680px; margin: 0 auto 1.75rem auto; line-height: 1.6;">
+            Your console flashes amber and red. SIEM Rule <span class="mono-data" style="color: #ffffff; background: rgba(244,63,94,0.3);">DET-WIN-0422</span> just triggered on threshold. 
             User <strong style="color: white;">Finance01</strong> on host <strong style="color: white;">FIN-PC-04</strong> has generated 18 failed authentication attempts.
           </p>
 
           <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <button id="btn-open-alert-trans" class="btn btn-alert" style="font-size: 1.05rem; padding: 0.85rem 2.2rem; box-shadow: 0 0 30px var(--danger-glow);">
+            <button id="btn-open-alert-trans" class="btn btn-alert" style="font-size: 1rem; padding: 0.75rem 2rem;">
               OPEN ALERT & BEGIN TRIAGE (TOPIC 02) →
             </button>
           </div>
@@ -258,69 +284,100 @@ export function renderTopic1View() {
 }
 
 export function initTopic1Events() {
-  initTeamMapEvents();
-  initProcessFlowEvents();
   initDataFlowEvents();
 
-  // Tech card selectors
-  document.querySelectorAll('[data-tech-card-id]').forEach(el => {
-    el.addEventListener('click', (e) => {
-      const id = e.currentTarget.getAttribute('data-tech-card-id');
-      if (id) {
-        selectedTechId = id;
+  // Tech details toggles
+  document.querySelectorAll('[data-toggle-details]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const targetId = e.currentTarget.getAttribute('data-toggle-details');
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        const isHidden = targetEl.style.display === 'none';
+        targetEl.style.display = isHidden ? 'block' : 'none';
         sound.playClick();
-        const app = document.getElementById('view-container');
-        if (app) {
-          app.innerHTML = renderTopic1View();
+      }
+    });
+  });
+
+  // Team role interaction
+  document.querySelectorAll('[data-team-role]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const role = e.currentTarget.getAttribute('data-team-role');
+      if (role) {
+        selectedRole = role;
+        sound.playClick();
+        const container = document.getElementById('team-visual-container');
+        if (container) {
+          container.innerHTML = renderTeamVisual(selectedRole);
           initTopic1Events();
         }
       }
     });
   });
 
-  // Quick check quiz logic
-  document.querySelectorAll('#quiz-t1-options .option-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      const opt = e.currentTarget.getAttribute('data-quiz-opt');
-      const feedback = document.getElementById('quiz-t1-feedback');
-
-      document.querySelectorAll('#quiz-t1-options .option-card').forEach(c => {
-        c.classList.remove('selected-correct', 'selected-wrong');
-      });
-
-      if (opt === 'b') {
-        card.classList.add('selected-correct');
-        sound.playSuccess();
-        store.completeCheckpoint('check-t1-quiz', 50, 'Mastered SOC Escalation Path');
-        store.completeTopic('topic-1');
-        if (feedback) {
-          feedback.style.display = 'block';
-          feedback.style.background = 'rgba(16, 185, 129, 0.15)';
-          feedback.style.border = '1px solid var(--success)';
-          feedback.style.color = '#86efac';
-          feedback.innerHTML = `<strong>Spot on!</strong> The technical escalation chain is strictly L1 ➔ L2 (Tier 2 Incident Response) ➔ L3. The CISO and SOC Manager handle corporate and operational management, not tier-2 forensic log triage.`;
-        }
-      } else {
-        card.classList.add('selected-wrong');
+  // Tech tool interaction
+  document.querySelectorAll('[data-tech-key]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const key = e.currentTarget.getAttribute('data-tech-key');
+      if (key) {
+        selectedTech = key;
         sound.playClick();
-        if (feedback) {
-          feedback.style.display = 'block';
-          feedback.style.background = 'rgba(245, 158, 11, 0.15)';
-          feedback.style.border = '1px solid var(--warning)';
-          feedback.style.color = '#fde68a';
-          feedback.innerHTML = `Not quite. Remember the technical escalation chain: L1 reviews and documents, then escalates technical deep-dives to <strong>L2 (Tier 2 Incident Response)</strong>. Look at the Team Map again!`;
+        const container = document.getElementById('tech-visual-container');
+        if (container) {
+          container.innerHTML = renderTechEcosystemVisual(selectedTech);
+          initTopic1Events();
         }
       }
     });
   });
 
-  // Story transition CTA
+  // Quick Check Quiz
+  const options = document.querySelectorAll('#quiz-t1-options .option-card');
+  const feedback = document.getElementById('quiz-t1-feedback');
+
+  options.forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      const choice = e.currentTarget.getAttribute('data-quiz-opt');
+      options.forEach(o => o.classList.remove('selected-correct', 'selected-wrong'));
+
+      if (choice === 'b') {
+        e.currentTarget.classList.add('selected-correct');
+        sound.playSuccess();
+        store.recordQuizScore('topic-1', 100);
+        store.completeCheckpoint('t1-quiz', 50, 'Mastered SOC Escalation Path');
+
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(16, 185, 129, 0.15)';
+          feedback.style.border = '1px solid var(--success)';
+          feedback.style.color = '#a7f3d0';
+          feedback.innerHTML = `
+            <strong>Correct! (+50 XP)</strong> L1 analysts escalate complex forensic investigations to Tier 2 (L2) Incident Responders. The CISO is reserved for executive disaster declarations, not operational host triage.
+          `;
+        }
+      } else {
+        e.currentTarget.classList.add('selected-wrong');
+        sound.playError();
+        if (feedback) {
+          feedback.style.display = 'block';
+          feedback.style.background = 'rgba(245, 158, 11, 0.15)';
+          feedback.style.border = '1px solid var(--warning)';
+          feedback.style.color = '#fde68a';
+          feedback.innerHTML = `
+            <strong>Incorrect.</strong> Remember: L1 reports directly to L2 for technical deep-dives. Executive leadership (CISO) is only notified during critical incident escalation.
+          `;
+        }
+      }
+    });
+  });
+
+  // Transition Button
   const btnTrans = document.getElementById('btn-open-alert-trans');
   if (btnTrans) {
     btnTrans.addEventListener('click', () => {
+      sound.playAlert();
       store.completeTopic('topic-1');
-      store.triggerAlertPulse();
-      store.navigate('topic-2', 2);
+      store.navigate('topic-2');
     });
   }
 }

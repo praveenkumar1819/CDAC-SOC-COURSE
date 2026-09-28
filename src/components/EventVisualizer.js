@@ -52,10 +52,10 @@ export function renderEventVisualizer() {
       </div>
 
       <!-- Detection Threshold Status Bar -->
-      <div class="glass-panel" style="padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border-color: ${thresholdReached ? 'rgba(239, 68, 68, 0.4)' : 'rgba(0, 242, 254, 0.2)'}; background: ${thresholdReached ? 'rgba(35, 12, 18, 0.75)' : 'rgba(12, 20, 36, 0.65)'};">
+      <div class="glass-panel" style="padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; border-color: ${thresholdReached ? 'var(--border-danger)' : 'var(--border-cyan)'}; background: ${thresholdReached ? 'rgba(35, 12, 18, 0.75)' : 'var(--bg-card)'};">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
           <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="width: 42px; height: 42px; border-radius: 50%; background: ${thresholdReached ? 'rgba(239, 68, 68, 0.2)' : 'rgba(0, 242, 254, 0.1)'}; display: flex; align-items: center; justify-content: center; color: ${thresholdReached ? 'var(--danger)' : 'var(--cyan-primary)'};">
+            <div style="width: 40px; height: 40px; border-radius: 50%; background: ${thresholdReached ? 'var(--danger-subtle)' : 'var(--cyan-subtle)'}; display: flex; align-items: center; justify-content: center; color: ${thresholdReached ? 'var(--danger)' : 'var(--cyan-primary)'};">
               ${thresholdReached ? `
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               ` : `
@@ -115,7 +115,7 @@ export function renderEventVisualizer() {
                 return `
                   <tr class="${isSuccess ? 'event-row-success' : ''} ${isSelected ? 'row-selected' : ''}" 
                       data-event-id="${evt.id}" 
-                      style="cursor: pointer; ${isSelected ? 'background: rgba(0, 242, 254, 0.12);' : ''}">
+                      style="cursor: pointer; ${isSelected ? 'background: rgba(56, 189, 248, 0.12);' : ''}">
                     <td style="font-family: var(--font-mono); font-size: 0.8rem;">${evt.time}</td>
                     <td>
                       <span class="event-id-badge ${isSuccess ? 'event-id-4624' : 'event-id-4625'}">
@@ -139,7 +139,7 @@ export function renderEventVisualizer() {
         </div>
 
         <!-- Single Event Details Inspector -->
-        <div class="glass-panel" style="padding: 1.5rem; background: rgba(14, 21, 38, 0.9); height: fit-content; border-color: ${selectedEvent.eventId === 4624 ? 'rgba(16, 185, 129, 0.4)' : 'rgba(0, 242, 254, 0.25)'};">
+        <div class="glass-panel" style="padding: 1.5rem; background: rgba(14, 21, 38, 0.9); height: fit-content; border-color: ${selectedEvent.eventId === 4624 ? 'rgba(16, 185, 129, 0.4)' : 'rgba(56, 189, 248, 0.25)'};">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
             <div style="display: flex; align-items: center; gap: 0.5rem;">
               <span class="event-id-badge ${selectedEvent.eventId === 4624 ? 'event-id-4624' : 'event-id-4625'}">

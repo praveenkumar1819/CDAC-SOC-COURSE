@@ -36,7 +36,7 @@ export function renderCourseView() {
               ${progressPercent}%
             </div>
             <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 0.5rem;">
-              <div style="width: ${progressPercent}%; height: 100%; background: linear-gradient(90deg, #00f2fe, #8b5cf6);"></div>
+              <div style="width: ${progressPercent}%; height: 100%; background: linear-gradient(90deg, #38bdf8, #818cf8);"></div>
             </div>
             <div style="font-size: 0.78rem; color: var(--text-secondary);">
               ${completedCount} of 6 Stages Mastered (${state.xp} / 1,250 XP)

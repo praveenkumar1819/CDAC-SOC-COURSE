@@ -7,7 +7,7 @@ export function renderCertificateModal() {
 
   return `
     <div id="certificate-modal-container" class="alert-popup-overlay" style="display: none;">
-      <div class="glass-panel-elevated" style="max-width: 820px; width: 100%; border: 2px solid rgba(0, 242, 254, 0.4); border-radius: var(--border-radius-lg); padding: 2.5rem; position: relative; background: #070c18; box-shadow: 0 0 60px rgba(0, 242, 254, 0.3);">
+      <div class="glass-panel-elevated" style="max-width: 820px; width: 100%; border: 2px solid rgba(56, 189, 248, 0.4); border-radius: var(--border-radius-lg); padding: 2.5rem; position: relative; background: #070c18; box-shadow: 0 0 60px rgba(56, 189, 248, 0.3);">
         
         <!-- Close Button -->
         <button id="btn-close-cert" style="position: absolute; top: 1.25rem; right: 1.25rem; background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 0.5rem;">
@@ -15,11 +15,11 @@ export function renderCertificateModal() {
         </button>
 
         <!-- Printable Certificate Area -->
-        <div id="printable-certificate" style="border: 2px solid rgba(0, 242, 254, 0.3); border-radius: 12px; padding: 2.5rem; text-align: center; position: relative; background: radial-gradient(circle at center, rgba(0, 242, 254, 0.04) 0%, rgba(5, 8, 17, 0.95) 100%);">
+        <div id="printable-certificate" style="border: 2px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 2.5rem; text-align: center; position: relative; background: radial-gradient(circle at center, rgba(56, 189, 248, 0.04) 0%, rgba(5, 8, 17, 0.95) 100%);">
           
           <!-- FinCorp Security Emblem -->
           <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1rem;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,242,254,0.3), rgba(139,92,246,0.3)); border: 1px solid var(--cyan-primary); display: flex; align-items: center; justify-content: center;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(56, 189, 248,0.3), rgba(139,92,246,0.3)); border: 1px solid var(--cyan-primary); display: flex; align-items: center; justify-content: center;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div style="text-align: left;">

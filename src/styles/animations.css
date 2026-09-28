@@ -120,33 +120,33 @@
 
 .cyber-toast {
   pointer-events: auto;
-  min-width: 280px;
-  max-width: 420px;
+  min-width: 260px;
+  max-width: 380px;
   background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border-medium);
   border-radius: var(--border-radius-md);
-  padding: 0.9rem 1.25rem;
+  padding: 0.85rem 1.15rem;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
+  gap: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
 }
 
 .cyber-toast-xp {
-  border-color: rgba(0, 242, 254, 0.4);
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
 }
 
 .cyber-toast-badge {
-  border-color: rgba(251, 191, 36, 0.4);
-  box-shadow: 0 0 25px rgba(251, 191, 36, 0.25);
+  border-color: rgba(251, 191, 36, 0.35);
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15);
 }
 
 .cyber-toast-alert {
-  border-color: rgba(239, 68, 68, 0.5);
-  box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+  border-color: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.2);
 }
 
 .toast-msg {

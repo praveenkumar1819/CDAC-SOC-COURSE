@@ -26,7 +26,7 @@ export function renderProfileView() {
       <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; margin-bottom: 3rem;">
         
         <!-- FinCorp Digital ID Badge -->
-        <div class="glass-panel" style="padding: 2.25rem; border: 2px solid rgba(0, 242, 254, 0.4); background: radial-gradient(circle at top right, rgba(0, 242, 254, 0.1) 0%, rgba(8, 12, 24, 0.95) 100%); border-radius: var(--border-radius-lg); position: relative; box-shadow: 0 16px 48px rgba(0,0,0,0.6);">
+        <div class="glass-panel" style="padding: 2.25rem; border: 2px solid rgba(56, 189, 248, 0.4); background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1) 0%, rgba(8, 12, 24, 0.95) 100%); border-radius: var(--border-radius-lg); position: relative; box-shadow: 0 16px 48px rgba(0,0,0,0.6);">
           
           <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem; margin-bottom: 1.5rem;">
             <div style="display: flex; align-items: center; gap: 0.65rem;">
@@ -40,7 +40,7 @@ export function renderProfileView() {
 
           <!-- Avatar & Callsign Display -->
           <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.75rem;">
-            <div style="width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,242,254,0.2), rgba(139,92,246,0.3)); border: 2px solid var(--cyan-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--cyan-primary); box-shadow: 0 0 20px var(--cyan-glow);">
+            <div style="width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, rgba(56, 189, 248,0.2), rgba(139,92,246,0.3)); border: 2px solid var(--cyan-primary); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: var(--cyan-primary); box-shadow: 0 0 20px var(--cyan-glow);">
               L1
             </div>
             <div>

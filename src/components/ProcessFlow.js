@@ -41,7 +41,7 @@ export function renderProcessFlow() {
       </div>
 
       <!-- Active Stage Detailed Card -->
-      <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.85); border-color: rgba(0, 242, 254, 0.35);">
+      <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.85); border-color: rgba(56, 189, 248, 0.35);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.75rem;">
             <span class="genz-badge ${activeStep.isL1Focus ? 'badge-alert' : 'badge-key-idea'}">
@@ -62,7 +62,7 @@ export function renderProcessFlow() {
           ${activeStep.desc}
         </p>
 
-        <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: 8px; padding: 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem;">
+        <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem;">
           <div style="color: var(--cyan-primary); margin-top: 2px;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
           </div>

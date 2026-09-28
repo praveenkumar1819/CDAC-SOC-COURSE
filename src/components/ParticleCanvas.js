@@ -50,9 +50,9 @@ export class ParticleCanvas {
     const time = Date.now() * 0.001;
 
     // Draw subtle cyber grid lines
-    this.ctx.strokeStyle = 'rgba(0, 242, 254, 0.025)';
+    this.ctx.strokeStyle = 'rgba(56, 189, 248, 0.02)';
     this.ctx.lineWidth = 1;
-    const gridSize = 60;
+    const gridSize = 64;
     
     for (let x = 0; x < this.width; x += gridSize) {
       this.ctx.beginPath();
@@ -75,9 +75,9 @@ export class ParticleCanvas {
         const dy = this.nodes[i].y - this.nodes[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 130) {
-          const edgeAlpha = (1 - dist / 130) * 0.12;
-          this.ctx.strokeStyle = `rgba(0, 242, 254, ${edgeAlpha})`;
+        if (dist < 120) {
+          const edgeAlpha = (1 - dist / 120) * 0.1;
+          this.ctx.strokeStyle = `rgba(56, 189, 248, ${edgeAlpha})`;
           this.ctx.beginPath();
           this.ctx.moveTo(this.nodes[i].x, this.nodes[i].y);
           this.ctx.lineTo(this.nodes[j].x, this.nodes[j].y);
@@ -97,8 +97,8 @@ export class ParticleCanvas {
       if (node.y < 0) node.y = this.height;
       if (node.y > this.height) node.y = 0;
 
-      const dynamicAlpha = node.alpha + Math.sin(time * 2 + node.pulseOffset) * 0.1;
-      this.ctx.fillStyle = `rgba(0, 242, 254, ${Math.max(0.05, dynamicAlpha)})`;
+      const dynamicAlpha = node.alpha + Math.sin(time * 2 + node.pulseOffset) * 0.08;
+      this.ctx.fillStyle = `rgba(56, 189, 248, ${Math.max(0.04, dynamicAlpha)})`;
       this.ctx.beginPath();
       this.ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
       this.ctx.fill();

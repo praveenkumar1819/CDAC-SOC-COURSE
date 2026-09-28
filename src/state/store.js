@@ -215,6 +215,12 @@ class Store {
     this.notify();
   }
 
+  recordQuizScore(topicId, score) {
+    if (!this.state.quizScores) this.state.quizScores = {};
+    this.state.quizScores[topicId] = score;
+    this.saveState();
+  }
+
   resetProgress() {
     this.state = { ...DEFAULT_STATE, xp: 100 };
     this.saveState();
@@ -231,7 +237,7 @@ class Store {
     
     let iconSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>';
     if (type === 'xp') {
-      iconSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
+      iconSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
     } else if (type === 'badge') {
       iconSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>';
     }

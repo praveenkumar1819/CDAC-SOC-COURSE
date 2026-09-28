@@ -10,7 +10,7 @@ export function renderAlertPanel() {
   const state = store.state;
 
   return `
-    <div class="glass-panel" style="background: rgba(11, 17, 33, 0.95); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);">
+    <div class="glass-panel" style="background: rgba(11, 17, 33, 0.95); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--border-radius-lg); overflow: hidden; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);">
       
       <!-- Top Alert Banner -->
       <div style="padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(239, 68, 68, 0.15), rgba(15, 23, 42, 0.8)); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">

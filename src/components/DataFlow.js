@@ -33,7 +33,7 @@ export function renderDataFlow() {
           return `
             <div class="flow-node ${isActive ? 'active' : ''} ${isAlert ? 'pulse-alert-node' : ''}" 
                  data-flow-id="${stage.id}"
-                 style="border-color: ${borderStyle}; background: ${isActive ? 'rgba(0, 242, 254, 0.08)' : 'var(--bg-card)'};">
+                 style="border-color: ${borderStyle}; background: ${isActive ? 'var(--cyan-subtle)' : 'var(--bg-card)'};">
               
               <div style="font-family: var(--font-mono); font-size: 0.7rem; color: ${isAlert ? 'var(--danger)' : 'var(--cyan-primary)'}; font-weight: 700; margin-bottom: 0.35rem;">
                 STAGE 0${stage.id}
@@ -72,7 +72,7 @@ export function renderDataFlow() {
       </div>
 
       <!-- Stage Detail Callout -->
-      <div class="glass-panel" style="padding: 1.5rem; background: rgba(14, 21, 38, 0.9); border-color: rgba(0, 242, 254, 0.3);">
+      <div class="glass-panel" style="padding: 1.5rem; background: var(--bg-surface-elevated); border-color: var(--border-cyan);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
           <h4 style="font-size: 1.15rem; color: var(--text-bright); font-weight: 700;">
             ${activeStage.title}

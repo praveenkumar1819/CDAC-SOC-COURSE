@@ -9,7 +9,7 @@ export function renderTeamMap() {
   return `
     <div style="margin: 2rem 0;">
       <!-- Escalation Path Header Indicator -->
-      <div class="glass-panel" style="padding: 1.25rem 1.75rem; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.7); border-color: rgba(0, 242, 254, 0.2);">
+      <div class="glass-panel" style="padding: 1.25rem 1.75rem; margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.7); border-color: rgba(56, 189, 248, 0.2);">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
           <div style="display: flex; align-items: center; gap: 0.75rem;">
             <span class="genz-badge badge-pro-tip">TECHNICAL ESCALATION PATH</span>
@@ -66,7 +66,7 @@ export function renderTeamMap() {
         </div>
 
         <!-- Role Detail Inspector Modal/Panel -->
-        <div class="glass-panel" style="padding: 1.75rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(0, 242, 254, 0.3); height: fit-content;">
+        <div class="glass-panel" style="padding: 1.75rem; background: rgba(15, 23, 42, 0.85); border-color: rgba(56, 189, 248, 0.3); height: fit-content;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
             <div>
               <span class="genz-badge ${selectedRole.isLearner ? 'badge-alert' : 'badge-tech-box'}" style="margin-bottom: 0.5rem;">
@@ -124,7 +124,7 @@ export function renderTeamMap() {
             </div>
           ` : ''}
 
-          <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 8px; padding: 1rem; margin-top: 1.25rem;">
+          <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 1rem; margin-top: 1.25rem;">
             <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-family: var(--font-mono); color: var(--cyan-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
               When does the L1 Analyst interact with them?

@@ -86,7 +86,7 @@ function renderSiemSandbox() {
   });
 
   return `
-    <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 36, 0.95); border: 1px solid rgba(0, 242, 254, 0.35);">
+    <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 36, 0.95); border: 1px solid rgba(56, 189, 248, 0.35);">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <span class="genz-badge badge-tech-box">SPLUNK / SENTINEL EMULATOR</span>
@@ -167,7 +167,7 @@ function renderDecoderSandbox() {
 
         <div style="display: flex; flex-direction: column; gap: 0.65rem;">
           ${WINDOWS_EVENT_IDS.map(evt => `
-            <div class="glass-panel" data-decoder-id="${evt.id}" style="padding: 1rem; cursor: pointer; border-color: ${evt.id === selectedDecoderId ? 'var(--cyan-primary)' : 'var(--border-subtle)'}; background: ${evt.id === selectedDecoderId ? 'rgba(0, 242, 254, 0.08)' : 'var(--bg-card)'};">
+            <div class="glass-panel" data-decoder-id="${evt.id}" style="padding: 1rem; cursor: pointer; border-color: ${evt.id === selectedDecoderId ? 'var(--cyan-primary)' : 'var(--border-subtle)'}; background: ${evt.id === selectedDecoderId ? 'rgba(56, 189, 248, 0.08)' : 'var(--bg-card)'};">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
                 <span class="event-id-badge ${evt.id === 4624 ? 'event-id-4624' : 'event-id-4625'}">${evt.id}</span>
                 <span style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">${evt.category}</span>
@@ -179,7 +179,7 @@ function renderDecoderSandbox() {
       </div>
 
       <!-- Event Decoder Deep Dive -->
-      <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.95); border-color: rgba(0, 242, 254, 0.35);">
+      <div class="glass-panel" style="padding: 2rem; background: rgba(14, 21, 38, 0.95); border-color: rgba(56, 189, 248, 0.35);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span class="event-id-badge ${selectedEventInfo.id === 4624 ? 'event-id-4624' : 'event-id-4625'}">ID ${selectedEventInfo.id}</span>

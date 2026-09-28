@@ -34,7 +34,7 @@ export function renderProgressView() {
             ${state.xp} <span style="font-size: 1rem; color: var(--text-muted);">/ 1,250</span>
           </div>
           <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-            <div style="width: ${xpPercent}%; height: 100%; background: linear-gradient(90deg, #00f2fe, #8b5cf6);"></div>
+            <div style="width: ${xpPercent}%; height: 100%; background: linear-gradient(90deg, #38bdf8, #818cf8);"></div>
           </div>
         </div>
 
@@ -86,7 +86,7 @@ export function renderProgressView() {
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
           ${state.badges.map(badge => `
-            <div class="glass-panel" style="padding: 1.5rem; border-color: ${badge.unlocked ? 'rgba(0, 242, 254, 0.35)' : 'var(--border-subtle)'}; background: ${badge.unlocked ? 'rgba(12, 20, 36, 0.9)' : 'rgba(10, 14, 26, 0.4)'}; opacity: ${badge.unlocked ? '1' : '0.6'};">
+            <div class="glass-panel" style="padding: 1.5rem; border-color: ${badge.unlocked ? 'rgba(56, 189, 248, 0.35)' : 'var(--border-subtle)'}; background: ${badge.unlocked ? 'rgba(12, 20, 36, 0.9)' : 'rgba(10, 14, 26, 0.4)'}; opacity: ${badge.unlocked ? '1' : '0.6'};">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
                 <div style="width: 44px; height: 44px; border-radius: 10px; background: ${badge.unlocked ? 'var(--cyan-subtle)' : 'rgba(255,255,255,0.03)'}; border: 1px solid ${badge.unlocked ? 'var(--cyan-primary)' : 'var(--border-subtle)'}; display: flex; align-items: center; justify-content: center; color: ${badge.unlocked ? 'var(--cyan-primary)' : 'var(--text-muted)'};">
                   ${badge.unlocked ? `

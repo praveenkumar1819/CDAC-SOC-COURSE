@@ -38,7 +38,7 @@ export function renderSeverityMatrix() {
 
   return `
     <div style="margin: 2rem 0;">
-      <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 35, 0.9); border: 1px solid rgba(0, 242, 254, 0.35);">
+      <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 35, 0.9); border: 1px solid rgba(56, 189, 248, 0.35);">
         
         <!-- Matrix Header -->
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -146,7 +146,7 @@ export function renderSeverityMatrix() {
         </div>
 
         <!-- Case Insight Box -->
-        <div style="background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 8px; padding: 1.25rem;">
+        <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 1.25rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
             <span class="genz-badge badge-key-idea">ANALYST SEVERITY VERDICT</span>
             <span style="font-weight: 700; color: var(--cyan-primary); font-size: 0.95rem;">Why Finance01 Began as Medium (5.8) and De-escalated to Informational / Closed</span>

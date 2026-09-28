@@ -36,7 +36,7 @@ export function renderFinalChallenge() {
   return `
     <div style="margin: 2rem 0;">
       <!-- Challenge Progress Steps -->
-      <div class="glass-panel" style="padding: 1.25rem 2rem; margin-bottom: 1.5rem; background: rgba(10, 16, 31, 0.85); border-color: rgba(0, 242, 254, 0.3);">
+      <div class="glass-panel" style="padding: 1.25rem 2rem; margin-bottom: 1.5rem; background: rgba(10, 16, 31, 0.85); border-color: rgba(56, 189, 248, 0.3);">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
           <div>
             <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.25rem;">
@@ -67,7 +67,7 @@ export function renderFinalChallenge() {
       </div>
 
       <!-- Main Challenge Stage Container -->
-      <div class="glass-panel" style="padding: 2.25rem; background: rgba(12, 18, 36, 0.95); border: 1px solid rgba(0, 242, 254, 0.35); min-height: 480px;">
+      <div class="glass-panel" style="padding: 2.25rem; background: rgba(12, 18, 36, 0.95); border: 1px solid rgba(56, 189, 248, 0.35); min-height: 480px;">
         ${renderChallengeStepContent()}
       </div>
     </div>
@@ -106,7 +106,7 @@ function renderChallengeStepContent() {
           </div>
 
           ${challengeState.queryExecuted ? `
-            <div class="animate-fade-in-up" style="background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
+            <div class="animate-fade-in-up" style="background: rgba(56, 189, 248, 0.04); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
                 <div style="display: flex; align-items: center; gap: 0.5rem;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>

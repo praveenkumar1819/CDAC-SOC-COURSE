@@ -17,7 +17,7 @@ export function renderFalsePositiveTree() {
     <div style="margin: 2rem 0;">
       
       <!-- Interactive Branching Wizard -->
-      <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 35, 0.9); border: 1px solid rgba(0, 242, 254, 0.35);">
+      <div class="glass-panel" style="padding: 2rem; background: rgba(12, 18, 35, 0.9); border: 1px solid rgba(56, 189, 248, 0.35);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.75rem;">
           <div style="display: flex; align-items: center; gap: 0.65rem;">
             <span class="genz-badge badge-try-it">INTERACTIVE DECISION TREE</span>
